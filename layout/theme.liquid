@@ -8,9 +8,7 @@
     <link rel="canonical" href="{{ canonical_url }}">
     <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
     {{ content_for_header }}
-    <!-- Header hook for plugins -->
     {{ 'application.css' | asset_url | stylesheet_tag }}
-    {{ 'application.js' | asset_url | script_tag }}
   </head>
   <body>
 
@@ -21,5 +19,15 @@
 
       {% include 'footer' %}
     </main>
+
+    {{ "jquery-3.3.1.min.js" | asset_url | script_tag }}
+
+    {% if settings.show_multiple_currencies %}
+      {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
+      {{ "jquery.currencies.min.js" | asset_url | script_tag }}
+    {% endif %}
+
+    {% include 'currencies' %}
+    {{ 'application.js' | asset_url | script_tag }}
   </body>
 </html>

@@ -1,0 +1,89 @@
+{% schema %}
+{
+  "name": "Slideshow",
+  "class": "hero-slideshow",
+  "settings": [
+    {
+      "id": "autoplay",
+      "type": "checkbox",
+      "label": "Autoplay Slideshow",
+      "default": true
+    },
+    {
+      "id": "autoplay_speed",
+      "type": "range",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Autoplay Speed",
+      "default": 5000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title",
+          "placeholder": "Slide Title"
+        },
+        {
+          "id": "content",
+          "type": "textarea",
+          "label": "Slide content",
+        },
+        {
+          "id": "button_url",
+          "type": "url",
+          "label": "Button URL"
+        }, 
+        {
+          "id": "button_text",
+          "type": "text",
+          "label": "Button text",
+          "placeholder": "Shop Now",
+          "info": "Defaults to \"Shop Now\""
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Hero",
+      "name": "Slideshow",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 6500
+      },
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Slide 1",
+            "content": "Some slide 1 content",
+            "button_url": "#",
+            "button_text": "Slide Button"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "title": "Slide 2",
+            "content": "Lorem Ipsum Dolor Sit Amet",
+            "button_url": "#",
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

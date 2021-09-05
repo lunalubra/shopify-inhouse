@@ -26,19 +26,27 @@
               <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
             </td>
             <td>
-              {% if item.original_line_price != item.line_price %}{{ item.original_line_price | money }}{% endif %}
+              {% if item.original_line_price != item.line_price %}
+                {{ item.original_line_price | money }}
+              {% endif %}
               {{ item.line_price | money }}
-              {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+              {% for discount in item.discounts %}
+                {{ discount.title }}
+              {% endfor %}
             </td>
           </tr>
         {% endfor %}
       </tbody>
     </table>
     <div>
-      <p>sub total : {{ cart.total_price | money }}</p>
-      <button type="submit" name="update">Update</button>
-      <button type="submit" name="checkout">Checkout</button>
+      <p>sub total :
+        {{ cart.total_price | money }}</p>
+      <button name="update" type="submit">Update</button>
+      <button name="checkout" type="submit">Checkout</button>
     </div>
+    <p class="js-cart-currency-note">
+      {{'cart.filled.currency_note_html' |t: currency: shop.currency}}
+    </p>
   </form>
 {% else %}
   <h2>cart</h2>
