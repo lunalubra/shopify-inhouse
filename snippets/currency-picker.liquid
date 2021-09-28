@@ -1,7 +1,7 @@
 {% if settings.show_multiple_currencies %}
-  <div class="currency-picker">
-
-    <label class="currency-picker-label">Pick a currency</label>
+  <div class="currency-picker styled-select">
+    
+    <label class="currency-picker-label visually-hidden">Pick a currency</label>
 
     <select class="currency-picker-select" name="currencies">
 
@@ -13,10 +13,12 @@
 
       {% for code in supported_codes %}
         {% if code != shop.currency and codes contains code %}
-          <option value="{{ code }}">{{ code }}</option>
+        <option value="{{ code }}">{{ code }}</option>
         {% endif %}
       {% endfor %}
 
     </select>
+
+    {% include 'inline-icon' with svg: 'icon-arrow-down.svg', class: 'current-color-stroke' %}
   </div>
 {% endif %}
